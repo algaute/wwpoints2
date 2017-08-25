@@ -11,6 +11,8 @@ import { PersonalComponent }  from './personal/personal.component';
 import { MenuComponent }  from './menu/menu.component';
 import { AppComponent }  from './app.component';
 
+import { DataService } from './services/data.service';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -44,7 +46,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports:        [
+  imports: [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
       } // <-- debugging purposes only
     )
   ],
-  declarations:   [ 
+  declarations: [ 
     LoginComponent,
     InscriptionComponent,
     RapportComponent,
@@ -62,9 +64,12 @@ const appRoutes: Routes = [
     MenuComponent,
     AppComponent
   ],
-  entryComponents:  [
+  entryComponents: [
     MenuComponent,
     AppComponent
+  ],
+  providers: [
+    DataService
   ]
   //,
   //bootstrap:    [ AppComponent ]

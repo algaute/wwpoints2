@@ -9,25 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var data_service_1 = require("./../services/data.service");
-var PersonalComponent = (function () {
-    function PersonalComponent(dataService) {
-        this.dataService = dataService;
-        this.name = 'WW points';
-        this.someProperty = '';
+var DataService = (function () {
+    function DataService() {
+        this.cars = [
+            'Ford', 'Chevrolet', 'Buick'
+        ];
     }
-    PersonalComponent.prototype.ngOnInit = function () {
-        console.log(this.dataService.cars);
-        this.someProperty = this.dataService.myData();
+    DataService.prototype.myData = function () {
+        return 'This is my data, man!';
     };
-    return PersonalComponent;
+    return DataService;
 }());
-PersonalComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: "<h1>personal {{name}}</h1><p>{{ someProperty }}</p>"
-    }),
-    __metadata("design:paramtypes", [data_service_1.DataService])
-], PersonalComponent);
-exports.PersonalComponent = PersonalComponent;
-//# sourceMappingURL=personal.component.js.map
+DataService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], DataService);
+exports.DataService = DataService;
+//# sourceMappingURL=data.service.js.map

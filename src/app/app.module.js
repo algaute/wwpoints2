@@ -15,6 +15,7 @@ var insertion_component_1 = require("./insertion/insertion.component");
 var personal_component_1 = require("./personal/personal.component");
 var menu_component_1 = require("./menu/menu.component");
 var app_component_1 = require("./app.component");
+var data_service_1 = require("./services/data.service");
 var appRoutes = [
     {
         path: '',
@@ -72,6 +73,9 @@ AppModule = __decorate([
         entryComponents: [
             menu_component_1.MenuComponent,
             app_component_1.AppComponent
+        ],
+        providers: [
+            data_service_1.DataService
         ]
     })
 ], AppModule);
