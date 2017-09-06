@@ -2,5 +2,6 @@
 
 package-lock.json
 
-/app/*.js
-/app/*.map
+main.js
+**/src/**/*.map
+**/app/**/*.js
