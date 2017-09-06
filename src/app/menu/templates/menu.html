@@ -1,3 +1,4 @@
+<!--
 <nav>
     <a routerLink="/login" routerLinkActive="active">Login</a>
     <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
@@ -5,3 +6,21 @@
     <a routerLink="/insertion" routerLinkActive="active">Insertion</a>
     <a routerLink="/rapport" routerLinkActive="active">Rapport</a>
 </nav>
+-->
+<md-menu #menu="mdMenu">
+    <a md-menu-item routerLink="/login" routerLinkActive="active">Login</a>
+    <a md-menu-item routerLink="/inscription" routerLinkActive="active">Inscription</a>
+    <a md-menu-item routerLink="/personal" routerLinkActive="active">Personal</a>
+    <a md-menu-item routerLink="/insertion" routerLinkActive="active">Insertion</a>
+    <a md-menu-item routerLink="/rapport" routerLinkActive="active">Rapport</a>
+</md-menu>
+
+<md-toolbar color="primary">
+    <span [mdMenuTriggerFor]="menu">
+        <md-icon>menu</md-icon>
+    </span>
+    <span class="fillSpace"></span>
+    <span>Application Title</span>
+    <span class="fillSpace"></span>
+    <span>Right Aligned Text</span>
+</md-toolbar>

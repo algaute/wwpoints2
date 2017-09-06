@@ -1,0 +1,79 @@
+<nav md-tab-nav-bar>
+  <a md-tab-link
+      *ngFor="let tabLink of tabLinks; let i = index"
+      [routerLink]="tabLink.link"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      {{tabLink.label}}
+  </a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<form class="form">
+
+  <md-form-field class="full-width">
+    <input mdInput type="email" placeholder="Email" required [formControl]="emailFormControl">
+    <md-error *ngIf="emailFormControl.hasError('pattern')">
+      Please enter a valid email address
+    </md-error>
+    <md-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </md-error>
+  </md-form-field>
+  
+  <md-form-field class="full-width">
+    <input mdInput type="password" placeholder="Password" required [formControl]="passwordFormControl">
+    <md-error *ngIf="passwordFormControl.hasError('pattern')">
+      Password must contain at least one lower case letter, one upper case letter and one digit. Must be 6-15 length, and no spaces.
+    </md-error>
+    <md-error *ngIf="passwordFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </md-error>
+  </md-form-field>    
+
+  <md-form-field class="full-width">
+    <input mdInput type="password" placeholder="Confirm password" required [errorStateMatcher]="myErrorStateMatcher">
+    <md-error>
+       Password confirmation is <strong>required</strong>
+    </md-error>
+  </md-form-field>    
+
+  <md-form-field class="full-width">
+    <input mdInput [mdDatepicker]="picker" placeholder="Début du programme">
+    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+    <md-datepicker #picker></md-datepicker>
+  </md-form-field>
+    
+  <md-form-field class="full-width">
+    <input mdInput type="text" placeholder="Prénom" required>
+  </md-form-field>    
+
+  <md-form-field class="full-width">
+    <input mdInput type="text" placeholder="Nom" required>
+  </md-form-field>    
+  
+  <md-select class="full-width" placeholder="Gender" required>
+    <md-option *ngFor="let sex of gender" [value]="sex.value">
+      {{ sex.text }}
+    </md-option>
+  </md-select>
+  
+  <md-form-field class="full-width">
+    <input mdInput type="number" placeholder="Age" required>
+  </md-form-field>    
+
+  <md-form-field class="full-width">
+    <input mdInput type="number" placeholder="Poid en kg" required>
+  </md-form-field>    
+
+  <md-form-field class="full-width">
+    <input mdInput type="number" placeholder="Grandeur en cm" required>
+  </md-form-field>    
+
+  <md-select class="full-width" placeholder="Greetings" required>
+      <md-option *ngFor="let wish of greetings" [value]="wish.value">
+        {{ wish.text }}
+      </md-option>
+  </md-select>           
+</form>

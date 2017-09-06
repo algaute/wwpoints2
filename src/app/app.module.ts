@@ -1,6 +1,10 @@
-import { ApplicationRef, Component, NgModule }      from '@angular/core';
+import { ApplicationRef, Component, NgModule,LOCALE_ID} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule, FormControl, Validators} from '@angular/forms';
+
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { LoginComponent }  from './login/login.component';
 import { InscriptionComponent }  from './inscription/inscription.component';
@@ -8,10 +12,12 @@ import { RapportComponent }  from './rapport/rapport.component';
 import { InsertionComponent }  from './insertion/insertion.component';
 import { PersonalComponent }  from './personal/personal.component';
 
+import { APP_SETTINGS, AppSettings } from './app.settings';
+import { DataService } from './services/data.service';
+
+import { MaterialModule } from './material.module';
 import { MenuComponent }  from './menu/menu.component';
 import { AppComponent }  from './app.component';
-
-import { DataService } from './services/data.service';
 
 const appRoutes: Routes = [
   {
@@ -48,6 +54,11 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       { 
@@ -69,7 +80,15 @@ const appRoutes: Routes = [
     AppComponent
   ],
   providers: [
-    DataService
+    DataService,
+    XMLHttpRequest,
+    {
+      provide: APP_SETTINGS,
+      useValue: AppSettings
+    },
+    {
+      provide: LOCALE_ID, useValue: 'fr-CH'
+    },   
   ]
   //,
   //bootstrap:    [ AppComponent ]

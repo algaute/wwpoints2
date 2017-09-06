@@ -1,0 +1,65 @@
+<nav md-tab-nav-bar>
+  <a md-tab-link
+    *ngFor="let tabLink of tabLinks; let i = index"
+    [routerLink]="tabLink.link"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+    {{tabLink.label}}
+  </a>
+</nav>
+<router-outlet></router-outlet>
+
+<form class="form" [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+
+  <md-form-field class="full-width">
+    <input mdInput formControlName="email" type="email" placeholder="Email">
+    <md-error *ngIf="emailFormControl.hasError('pattern')">
+      Please enter a valid email address
+    </md-error>
+    <md-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </md-error>
+  </md-form-field>
+  
+  <md-form-field class="full-width">
+    <input mdInput formControlName="password" type="password" placeholder="Password">
+    <md-error *ngIf="passwordFormControl.hasError('pattern')">
+      Password must contain at least one lower case letter, one upper case letter and one digit. Must be 6-15 length, and no spaces.</md-error>
+    <md-error *ngIf="passwordFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </md-error>
+  </md-form-field>
+  
+  <md-slide-toggle
+    class="margin"
+    formControlName="keepConnected"
+    [color]="color"
+    [checked]="checked"
+    [disabled]="disabled">
+    Rester connecté!
+  </md-slide-toggle>
+
+  <div>
+    <button type="submit" class="full-width" md-button>Login</button>
+  </div>
+</form>
+
+
+  <!--
+<md-tab-group>
+    <md-tab>
+        <ng-template md-tab-label>
+          Déjà inscrit ?<br/>Identifiez-vous!
+        </ng-template>
+        <h1>Best pasta restaurants</h1>
+        <p>...</p>
+      </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      <md-icon>thumb_down</md-icon>Pas encore inscrit ?<br/>Inscrivez-vous gratuitement!
+    </ng-template>
+    <h1>Terrible sushi restaurants</h1>
+    <p>...</p>$
+  </md-tab>
+</md-tab-group>
+-->

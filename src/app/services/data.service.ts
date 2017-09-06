@@ -1,17 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { Headers, Http, Response, RequestOptions,RequestMethod } from '@angular/http';
+
+import { APP_SETTINGS, AppSettings, IAppSettings } from './../app.settings';
+
+import { Observable } from 'rxjs/Rx'
 
 @Injectable()
 export class DataService {
 
-  constructor() { }
-
+  constructor(private http: Http,
+              @Inject( APP_SETTINGS ) private config: IAppSettings) {
+  }
+  
   cars = [
     'Ford','Chevrolet','Buick'
   ];
 
 
   myData() {
-    return 'This is my data, man!';
+
+    console.log("This is the App's Key: ", this.config.API_ENDPOINT);
+
+    return this.config.API_ENDPOINT
   }
 
 }
